@@ -1,0 +1,96 @@
+/* static/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eee8b7;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fccd97;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.upload-form {
+    background-color: #f5ce65;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.upload-form input[type="file"] {
+    display: block;
+    margin-bottom: 15px;
+    width: 97%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.upload-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    font-size: 16px; /* เพิ่มขนาดตัวอักษร */
+}
+
+.upload-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: #ff0000;
+    margin-top: 10px;
+}
+
+.result-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+.result-container {
+    text-align: center;
+    flex-basis: calc(25% - 20px);
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+}
+
+.result-img-horizontal {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
