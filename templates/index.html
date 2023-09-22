@@ -6,6 +6,10 @@
 </head>
 <body>
     <div class="container">
+        
+    </div>
+    <div class="container">
+        <img src="{{ url_for('static', filename='logo/photo-camera.png') }}">
         <h1>Background Removal</h1>
         <form action="/process" method="post" enctype="multipart/form-data" class="upload-form">
             <label for="image">Upload Image:</label>
@@ -14,24 +18,6 @@
             <input type="file" name="background" accept="image/*" required>
             <button type="submit">Remove Background</button>
         </form>
-        {% if original_image and removebg_image and output_image and background_image %}
-        <div class="result-row">
-            <div class="result-container">
-                <h2>Original Image:</h2>
-                <img class="result-img-horizontal" src="data:image/png;base64,{{ original_image }}" alt="Original Image">
-            </div>
-            <div class="result-container">
-                <h2>Remove Background Image:</h2>
-                <img class="result-img-horizontal" src="data:image/png;base64,{{ removebg_image }}" alt="Remove Background Image">
-            </div>
-            <div class="result-container">
-                <h2>Background Image:</h2>
-                <img class="result-img-horizontal" src="data:image/png;base64,{{ background_image }}" alt="Background Image">
-            </div>
-            <div class="result-container">
-                <h2>Output Image:</h2>
-                <img class="result-img-horizontal" src="data:image/png;base64,{{ output_image }}" alt="Output Image">
-            </div>
         </div>
         {% endif %}
     </div>

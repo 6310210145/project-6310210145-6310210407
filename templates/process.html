@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Background Removal - Process Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="result-row">
+        <div class="result-container">
+            <h2>Original Image:</h2>
+            <img class="result-img-horizontal" src="data:image/png;base64,{{ original_image }}" alt="Original Image">
+        </div>
+        <div class="result-container">
+            <h2>Remove Background Image:</h2>
+            <img class="result-img-horizontal" src="data:image/png;base64,{{ removebg_image }}" alt="Remove Background Image">
+        </div>
+        <div class="result-container">
+            <h2>Background Image:</h2>
+            <img class="result-img-horizontal" src="data:image/png;base64,{{ background_image }}" alt="Background Image">
+        </div>
+        <div class="result-container">
+            <h2>Output Image:</h2>
+            <img class="result-img-horizontal" src="data:image/png;base64,{{ output_image }}" alt="Output Image">
+        </div>
+        <div class="result-container">
+            <h2>New Output Image:</h2>
+            <img class="result-img-horizontal" src="data:image/png;base64,{{ new_output_image }}" alt="New Output Image">
+        </div>
+        <div class="result-container">
+            <h2>New Output2 Image</h2>
+            <img class="result-img-horizontal" src="data:image/png;base64,{{ new_output2_image }}" alt="New Output2 Image">
+        </div>
+    </div>
+</body>
+</html>

@@ -15,7 +15,7 @@ def image_to_base64(image):
 
 @app.route('/')
 def index():
-    return render_template('index.html', original_image='', removebg_image='', background_image='', output_image='')
+    return render_template('index.html', original_image='', removebg_image='', background_image='', output_image='', new_output_image='', new_output2_image='')
 
 @app.route('/process', methods=['POST'])
 def process_image():
@@ -23,6 +23,8 @@ def process_image():
     removebg_image_base64 = ''
     background_image_base64 = ''
     output_image_base64 = ''
+    new_output_image_base64 = ''
+    new_output2_image_base64 = ''
 
     # ตรวจสอบว่ามีไฟล์ภาพที่อัปโหลดหรือไม่
     if 'image' in request.files:
@@ -30,11 +32,15 @@ def process_image():
 
         # โหลดภาพต้นฉบับ
         input_image = Image.open(image_file)
-        
-        # ลบพื้นหลัง
-        mask = remove(input_image)
+
+        # ปรับขนาดรูปต้นฉบับให้มีขนาดใหญ่ขึ้น 2 เท่า
         new_size = (input_image.width * 2, input_image.height * 2)
-        mask_new = input_image.resize(new_size)
+        new_input_image = input_image.resize(new_size)
+
+        # ลบพื้นหลังตั้งแต่เริ่มต้น
+        mask = remove(input_image)
+        new_mask = remove(new_input_image)
+
         # แปลงภาพเป็น base64
         original_image_base64 = image_to_base64(input_image)
         removebg_image_base64 = image_to_base64(mask)
@@ -43,13 +49,28 @@ def process_image():
         if 'background' in request.files:
             background_file = request.files['background']
             background = Image.open(background_file)
+
+            # ปรับขนาดรูปพื้นหลังให้ตรงกับขนาดของรูปภาพที่อัปโหลด
             background = background.resize(input_image.size)
-            output = Image.composite(input_image, background, mask_new)
+
+            output = Image.composite(input_image, background, mask)
+
             background_image_base64 = image_to_base64(background)
             output_image_base64 = image_to_base64(output)
 
+            # สร้างภาพ new output
+            new_size = (input_image.width * 2, input_image.height * 2)
+            new_background = background.resize(new_size)
+            new_output = Image.composite(input_image, new_background, mask)
+            new_output_image_base64 = image_to_base64(new_output)
+
+            # สร้างภาพ new output2
+            new_output2 = Image.composite(new_input_image, background, new_mask)
+            new_output2_image_base64 = image_to_base64(new_output2)
+
     # ส่งข้อมูลไปยังหน้าเว็บสำหรับแสดงผล
-    return render_template('index.html', original_image=original_image_base64, removebg_image=removebg_image_base64, background_image=background_image_base64, output_image=output_image_base64)
+    return render_template('process.html', original_image=original_image_base64, removebg_image=removebg_image_base64, background_image=background_image_base64, output_image=output_image_base64, new_output_image=new_output_image_base64, new_output2_image=new_output2_image_base64)
+    
 
 if __name__ == '__main__':
     app.run(debug=True)
