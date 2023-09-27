@@ -7,27 +7,35 @@
 <body>
     <div class="result-row">
         <div class="result-container">
-            <h2>Original Image:</h2>
+            <h2>Original Image</h2>
             <img class="result-img-horizontal" src="data:image/png;base64,{{ original_image }}" alt="Original Image">
         </div>
         <div class="result-container">
-            <h2>Remove Background Image:</h2>
+            <h2> figure 1 Input Remove Background</h2>
             <img class="result-img-horizontal" src="data:image/png;base64,{{ removebg_image }}" alt="Remove Background Image">
         </div>
         <div class="result-container">
-            <h2>Background Image:</h2>
+            <h2> figure 2 Zoom In </h2>
+            <img class="result-img-horizontal" src="data:image/png;base64,{{ new_removebg_image }}" alt="Remove Background Image">
+        </div>
+        <div class="result-container">
+            <h2> figure 3 Zoom Out</h2>
+            <img class="result-img-horizontal" src="data:image/png;base64,{{ removebg_image }}" alt="Remove Background Image">
+        </div>
+        <div class="result-container">
+            <h2>Background Image</h2>
             <img class="result-img-horizontal" src="data:image/png;base64,{{ background_image }}" alt="Background Image">
         </div>
         <div class="result-container">
-            <h2>Output Image:</h2>
+            <h2>figure 1 Output Image</h2>
             <img class="result-img-horizontal" src="data:image/png;base64,{{ output_image }}" alt="Output Image">
         </div>
         <div class="result-container">
-            <h2>New Output Image:</h2>
+            <h2>Figure 2 Zoom Out Image</h2>
             <img class="result-img-horizontal" src="data:image/png;base64,{{ new_output_image }}" alt="New Output Image">
         </div>
         <div class="result-container">
-            <h2>New Output2 Image</h2>
+            <h2> Figure 3 Zoom In Image</h2>
             <img class="result-img-horizontal" src="data:image/png;base64,{{ new_output2_image }}" alt="New Output2 Image">
         </div>
     </div>

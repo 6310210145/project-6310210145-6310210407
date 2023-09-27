@@ -2,31 +2,40 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #eee8b7;
+    background-color: #DDF2D1;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fccd97;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+
+/* ปรับ CSS ของ .logo */
+.logo {
+    float: left; /* ให้โลโก้อยู่ทางซ้าย */
+    width: 300px; /* กำหนดความกว้างของโลโก้ */
+    height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
+    margin-right: 100px; /* กำหนดระยะห่างข้างขวาของโลโก้ */
+    margin-left: 200px;
+    margin-top: 100px;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
+    /*text-align: center;*/
+    margin-left: 200px;
+    position: fixed;
+    bottom: 100px;
+
 }
 
 .upload-form {
     background-color: #f5ce65;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0.5, 0.5, 0.5, 0.1);
+    position: fixed;
+    top: 175px;
+    right: 150px;
+    width: 400px; /* กำหนดความกว้างของ Upload Form */
 }
 
 .upload-form label {
@@ -51,12 +60,13 @@ h1 {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
     width: 100%;
     text-align: center;
     transition: background-color 0.3s ease;
     font-size: 16px; /* เพิ่มขนาดตัวอักษร */
+    box-shadow: 0 2px 5px rgba(1, 1, 1, 0.5);
 }
 
 .upload-form button[type="submit"]:hover {
@@ -84,13 +94,21 @@ h1 {
     border: 2px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; /* เพิ่มการเคลื่อนไหวสำหรับการ hover */
+}
 
+
+.result-container:hover {
+    transform: scale(1.05);
 }
 
 .result-img-horizontal {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
+    transition: opacity 0.2s; 
 }
 
-
+.result-container:hover .result-img-horizontal {
+    opacity: 0.7;
+}
