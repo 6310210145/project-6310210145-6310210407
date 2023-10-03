@@ -35,7 +35,7 @@ def process_image():
         input_image = Image.open(image_file)
 
         # ปรับขนาดรูปต้นฉบับให้มีขนาดใหญ่ขึ้น 2 เท่า
-        new_size = (int(input_image.width * 1.5), int(input_image.height * 1.5))
+        new_size = (int(input_image.width * 2), int(input_image.height * 2))
         new_input_image = input_image.resize(new_size)
 
         # ลบพื้นหลังตั้งแต่เริ่มต้น
@@ -53,8 +53,14 @@ def process_image():
             background = Image.open(background_file)
 
             # ปรับขนาดรูปพื้นหลังให้ตรงกับขนาดของรูปภาพที่อัปโหลด
-            background_resize = background.resize(input_image.size)
-            output = Image.composite(input_image, background, mask)
+            #background_resize = background.resize(input_image.size)
+            
+            # สร้าง output image โดยวางภาพ mask บน background ตรงกลาง
+            output = Image.new('RGBA', input_image.size)
+            x_offset = (input_image.width - mask.width) // 2
+            y_offset = (input_image.height - mask.height) // 2
+            output.paste(background, (0, 0))
+            output.paste(mask, (x_offset, y_offset), mask=mask)
 
             background_image_base64 = image_to_base64(background)
             output_image_base64 = image_to_base64(output)
@@ -62,12 +68,19 @@ def process_image():
             # สร้างภาพ new output
             new_size = (background.width * 2, background.height * 2)
             new_background = background.resize(new_size)
-            new_output = Image.composite(input_image, new_background, mask)
+            new_output = Image.new('RGBA', new_size)
+            x_offset = (new_size[0] - mask.width) // 2
+            y_offset = (new_size[1] - mask.height) // 2
+            new_output.paste(new_background, (0, 0))
+            new_output.paste(mask, (x_offset, y_offset), mask=mask)
             new_output_image_base64 = image_to_base64(new_output)
 
             # สร้างภาพ new output2
-            # new_background2 = background.resize(new_mask.size)
-            new_output2 = Image.composite(new_input_image, background, new_mask)
+            new_output2 = Image.new('RGBA', input_image.size)
+            x_offset = (input_image.width - new_mask.width) // 2
+            y_offset = (input_image.height - new_mask.height) // 2
+            new_output2.paste(background, (0, 0))
+            new_output2.paste(new_mask, (x_offset, y_offset), mask=new_mask)
             new_output2_image_base64 = image_to_base64(new_output2)
 
     # ส่งข้อมูลไปยังหน้าเว็บสำหรับแสดงผล
