@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Background Removal</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        
-    </div>
-    <div class="container">
-        <img src="{{ url_for('static', filename='logo/photo-camera.png') }}">
+    <head>
+        <title>Remove Background</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo/photo-camera.png') }}" height="350" width="350"> 
+        </div>
         <h1>Background Removal</h1>
         <form action="/process" method="post" enctype="multipart/form-data" class="upload-form">
             <label for="image">Upload Image:</label>
@@ -18,7 +16,5 @@
             <input type="file" name="background" accept="image/*" required>
             <button type="submit">Remove Background</button>
         </form>
-        </div>
-    </div>
-</body>
+    </body>
 </html>
