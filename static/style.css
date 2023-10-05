@@ -8,26 +8,43 @@ body {
 }
 
 
-/* ปรับ CSS ของ .logo */
 .logo {
-    float: left; /* ให้โลโก้อยู่ทางซ้าย */
+    position: fixed;
+    top: 150px; /* เลื่อนโลโก้ไปทางบน */
+    left: 200px; /* เลื่อนโลโก้ไปทางขวา */
     width: 200px; /* กำหนดความกว้างของโลโก้ */
     height: auto; /* ให้ความสูงปรับตามอัตราส่วน */
-    margin-right: 100px; /* กำหนดระยะห่างข้างขวาของโลโก้ */
-    margin-left: 200px;
-    margin-top: 100px;
+    z-index: 1; /* จัดเรียงให้โลโก้อยู่หน้าสุด */
+
+    /* เพิ่มพื้นหลังสี่เหลี่ยม */
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0; /* ปรับ top เป็น 0 เพื่อให้พื้นหลังสี่เหลี่ยมอยู่ภายในโลโก้ */
+        margin-top: -25px;
+        left: -75px; /* ปรับ left เพื่อให้ขยับมาทางด้านซ้าย */
+        right: 0; /* ปรับ right เพื่อให้พอดีกับความกว้างของโลโก้ */
+        bottom: -50px; /* ปรับ bottom เพื่อให้พื้นหลังสี่เหลี่ยมอยู่ภายในโลโก้ */
+        width: 500px; /* ปรับ width เป็น auto เพื่อให้ความกว้างปรับตามเนื้อหาภายใน */
+        height: auto;
+        background-color: #FDDF8E; /* สีพื้นหลัง */
+        border-radius: 20px; /* มุมขอบโค้งเหมือนโลโก้ */
+        z-index: -1; /* จัดเรียงพื้นหลังไว้หลังโลโก้ */
+            /* เพิ่มเงา */
+        box-shadow: 0px 0px 10px rgba(80, 79, 79, 0.5);
+    }
 }
 
 h1 {
     /*text-align: center;*/
     margin-left: 200px;
     position: fixed;
-    bottom: 100px;
+    bottom: 50px;
 
 }
 
 .upload-form {
-    background-color: #f5ce65;
+    background-color: #FDDF8E;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 20px;
